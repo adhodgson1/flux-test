@@ -1,0 +1,26 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: prometheus
+  namespace: prometheus
+spec:
+  releaseName: prometheus
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: prometheus-operator
+    version: 8.14.0
+ helmVersion: v3
+  values:
+    grafana:
+      adminPassword: pyG3iaiqABk38gHhR  # Need to work out how to manage secrets properly!
+      ingress:
+        enabled: true
+        annotations:
+          traefik.ingress.kubernetes.io/router.tls: "true"
+        path: /
+        hosts:
+        - as-np-euw-and-aks-ingress.westeurope.cloudapp.azure.com
+    prometheus-node-exporter:
+      podAnnotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9100"
