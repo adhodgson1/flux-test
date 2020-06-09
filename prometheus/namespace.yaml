@@ -1,4 +1,4 @@
 apiVersion: v1
-ind: Namespace
+kind: Namespace
 metadata:
   name: prometheus
