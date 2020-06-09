@@ -9,7 +9,6 @@ spec:
     repository: https://kubernetes-charts.storage.googleapis.com
     name: prometheus-operator
     version: 8.14.0
- helmVersion: v3
   values:
     grafana:
       adminPassword: pyG3iaiqABk38gHhR  # Need to work out how to manage secrets properly!
